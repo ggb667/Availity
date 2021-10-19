@@ -18,7 +18,7 @@ import org.junit.Test;
 /**
  * Unit test for LispParenthesessChecker.
  */
-public class ListParenthesesChecker {
+public class LispParenthesesCheckerTest {
 
     /**
      * Check to make sure the code does what we want for the trivial case.
