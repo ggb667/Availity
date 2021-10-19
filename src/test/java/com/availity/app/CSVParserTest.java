@@ -15,8 +15,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.availity.app.CSVParser;
-
 public class CSVParserTest {
 
     @Test
