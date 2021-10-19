@@ -1,3 +1,5 @@
+package com.avility.app;
+
 public class Sample1 {
     
     public static void main(String[] args){
@@ -17,6 +19,7 @@ public class Sample1 {
             value = c == '(' ? ++value : value;
             value = c == ')' ? --value : value;
             System.out.println(c + " " + value);
+            if ( value < 0) break;
         }
         return value;
     }
