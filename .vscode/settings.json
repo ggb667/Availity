@@ -1,0 +1,13 @@
+{
+    "java.configuration.runtimes": [
+        {
+          "name": "JavaSE-1.8",
+          "path": "/c/Program Files (x86)/Common Files/Oracle/Java/javapath/java",
+          "default": true
+        },
+        {
+            "name": "JavaSE-11",
+            "path": "/c/Users/User/AppData/Local/Programs/Eclipse Foundation/jdk-11.0.12.7-hotspot",
+        }
+    ]
+}

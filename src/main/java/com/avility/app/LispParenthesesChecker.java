@@ -1,6 +1,6 @@
 package com.avility.app;
 
-public class Sample1 {
+public class LispParenthesesChecker {
     
     public static void main(String[] args){
 
