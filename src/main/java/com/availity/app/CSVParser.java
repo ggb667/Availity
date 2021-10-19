@@ -1,4 +1,4 @@
-package com.avility.app;
+package com.availity.app;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-class AvilityData {
+class AvailityData {
     String userId;
     String firstName;
     String lastName;
@@ -53,13 +53,13 @@ public class CSVParser {
      * @param args A list of filepaths. 
      */
     public static void main(String[] args) throws Exception {
-        Map<String, AvilityData> m = new TreeMap<String, AvilityData>();
+        Map<String, AvailityData> m = new TreeMap<String, AvailityData>();
         for (String filepath : args) {
             String avilityCSVDataLine;
             try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
                 while ((avilityCSVDataLine = br.readLine()) != null) {
                     String[] data = avilityCSVDataLine.split(",");
-                    AvilityData a = new AvilityData();
+                    AvailityData a = new AvailityData();
                     if (data[3].indexOf("Version") != -1) { //Skip header line if present
                         continue;
                     }
