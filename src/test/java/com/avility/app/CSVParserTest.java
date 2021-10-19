@@ -19,39 +19,42 @@ public class CSVParserTest {
 
     @Test
     public void testMainNoInputFiles() {
-        try {
-            final PrintStream originalPrintStream = System.out;
-            final PrintStream originalErrorStream = System.err;
-            final ByteArrayOutputStream os = new ByteArrayOutputStream();
-            final ByteArrayOutputStream es = new ByteArrayOutputStream();
-            System.setOut(new PrintStream(os));
-            System.setErr(new PrintStream(es));
-            final ExecutorService executorService = Executors.newSingleThreadExecutor();
-            final Future<Void> future = executorService.submit(new Callable<Void>() {
-                public Void call() throws Exception {
-                    LispParenthesesChecker.main(new String[] {});
-                    return null;
-                }
-            });
-            future.get();
-            System.setOut(originalPrintStream);
-            System.setErr(originalErrorStream);
-            assertTrue(es.toString(StandardCharsets.UTF_8).length() == 0);// There should be no output.
-            assertTrue(os.toString(StandardCharsets.UTF_8).length() == 0);// There should be no output.
-            assertFalse(new File("output.csv").exists());
-        } catch (final Exception e) {// There should be no exceptions
-            assertNull(e);
-        }
+        String[] args = new String[] {};
+        testMainUtil(args);
+        assertFalse(new File("output.csv").exists());
+    }
+
+    final String testFilesPathRelativeToExecutationLocation = "./src/test/java/com/avility/app/";
+
+    @Test
+    public void testMain1InputFile() {
+        String[] args = new String[] {
+            testFilesPathRelativeToExecutationLocation + "AvilityData.csv"
+        };
+        testMainUtil(args);
+        assertTrue(new File("output.csv").exists());
     }
 
     @Test
     public void testMain3InputFiles() {
-        final String testFilesPathRelativeToExecutationLocation = "./src/test/java/com/avility/app/";
-//      System.out.println(new File("TestFile.txt").getAbsolutePath());
-        assertTrue(new File("./src/test/java/com/avility/app/AvilityData.csv").exists());
-        assertTrue(new File("./src/test/java/com/avility/app/Data.csv").exists());
-        assertTrue(new File("./src/test/java/com/avility/app/MyData.csv").exists());
+        String[] args = new String[] {
+            testFilesPathRelativeToExecutationLocation + "AvilityData.csv",
+            testFilesPathRelativeToExecutationLocation + "Data.csv",
+            testFilesPathRelativeToExecutationLocation + "MyData.csv"
+        };
+        testMainUtil(args);
+        assertTrue(new File("output.csv").exists());
+    }
 
+    public void testMainUtil(String[] args) {            
+        for (final String str : args) {
+            assertTrue(new File(str).exists());
+        }
+        File f = new File("output.csv");
+        if(f.exists()){
+            f.delete();
+        }
+        assertFalse(new File("output.csv").exists());
         try {
             final PrintStream originalPrintStream = System.out;
             final PrintStream originalErrorStream = System.err;
@@ -62,20 +65,15 @@ public class CSVParserTest {
             final ExecutorService executorService = Executors.newSingleThreadExecutor();
             final Future<Void> future = executorService.submit(new Callable<Void>() {
                 public Void call() throws Exception {
-                    LispParenthesesChecker.main(new String[] {
-                        testFilesPathRelativeToExecutationLocation + "AvilityData.csv",
-                        testFilesPathRelativeToExecutationLocation + "Data.csv",
-                        testFilesPathRelativeToExecutationLocation + "MyData.csv"});
+                    CSVParser.main(args);
                     return null;
                 }
             });
             future.get();
             System.setOut(originalPrintStream);
             System.setErr(originalErrorStream);
-//          assertTrue(os.toString(StandardCharsets.UTF_8).length() == 0);// There should be no output.
-            System.out.println(os.toString(StandardCharsets.UTF_8));
+            assertTrue(os.toString(StandardCharsets.UTF_8).length() == 0);// There should be no output.
             assertTrue(es.toString(StandardCharsets.UTF_8).length() == 0);// There should be no output.
-//          assertTrue(new File(testFilesPathRelativeToExecutationLocation+"output.csv").exists());
         } catch (final Exception e) {// There should be no exceptions
             assertNull(e);
         }

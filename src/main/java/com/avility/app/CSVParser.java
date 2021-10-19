@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-import java.io.File;
 
 class AvilityData {
     String userId;
@@ -49,11 +48,11 @@ public class CSVParser {
      * Entry point for main application.  Feed it valid filepath strings.  
      * No checking of any type for good data, invalid filepaths, etc.
      * Emits "output.csv", which contains all of the unique data elements with
-     * highest version only. 
+     * highest version only sorted by userId (by virtue of the fact is backed by
+     * a tree map with userId as the key). 
      * @param args A list of filepaths. 
      */
     public static void main(String[] args) throws Exception {
-        System.out.println(new File("TestFile.txt").getAbsolutePath());
         Map<String, AvilityData> m = new TreeMap<String, AvilityData>();
         for (String filepath : args) {
             String avilityCSVDataLine;
