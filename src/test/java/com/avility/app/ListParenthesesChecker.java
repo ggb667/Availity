@@ -4,10 +4,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -57,8 +57,8 @@ public class ListParenthesesChecker {
                 future.get();
                 System.setOut(originalPrintStream);
                 System.setErr(originalErrorStream);
-                assertTrue(es.toString(StandardCharsets.UTF_8).length() == 0);
-                assertTrue(os.toString(StandardCharsets.UTF_8).contains(" is good"));
+                assertTrue(es.toString(UTF_8).length() == 0);
+                assertTrue(os.toString(UTF_8).contains(" is good"));
             } catch (final Exception e) {
                 assertNull(e);
             }
@@ -105,8 +105,8 @@ public class ListParenthesesChecker {
                 future.get();
                 System.setOut(originalPrintStream);
                 System.setErr(originalErrorStream);
-                assertTrue(es.toString(StandardCharsets.UTF_8).length() == 0);
-                assertTrue(os.toString(StandardCharsets.UTF_8).contains(" is bad"));
+                assertTrue(es.toString(UTF_8).length() == 0);
+                assertTrue(os.toString(UTF_8).contains(" is bad"));
             } catch (final Exception e) {
                 assertNull(e);
             }
@@ -135,8 +135,8 @@ public class ListParenthesesChecker {
             future.get();
             System.setOut(originalPrintStream);
             System.setErr(originalErrorStream);
-            assertTrue(es.toString(StandardCharsets.UTF_8).length() == 0);
-            assertFalse(os.toString(StandardCharsets.UTF_8).contains(" is good"));
+            assertTrue(es.toString(UTF_8).length() == 0);
+            assertFalse(os.toString(UTF_8).contains(" is good"));
         } catch (final Exception e) {
             assertNotNull(e);
         }

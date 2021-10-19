@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
+import java.io.File;
 
 class AvilityData {
     String userId;
@@ -52,6 +53,7 @@ public class CSVParser {
      * @param args A list of filepaths. 
      */
     public static void main(String[] args) throws Exception {
+        System.out.println(new File("TestFile.txt").getAbsolutePath());
         Map<String, AvilityData> m = new TreeMap<String, AvilityData>();
         for (String filepath : args) {
             String avilityCSVDataLine;
