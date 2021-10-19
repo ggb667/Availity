@@ -1,13 +1,16 @@
-package com.avility.app;
+package com.availity.app;
 
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
-public class AvilityDataTest {
+import com.availity.app.AvailityData;
+import com.availity.app.CSVParser;
+
+public class AvailityDataTest {
     @Test
     public void testToString() {
         String[] data = {"\"UserId\"","\"First\"","\"Last\"","123","\"InsuranceCompany\""};
-        AvilityData a = new AvilityData();
+        AvailityData a = new AvailityData();
         a.userId=CSVParser.removeQuotes(data[0]);
         a.firstName=CSVParser.removeQuotes(data[1]);
         a.lastName=CSVParser.removeQuotes(data[2]);
