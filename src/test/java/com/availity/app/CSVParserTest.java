@@ -1,4 +1,4 @@
-package com.avility.app;
+package com.availity.app;
 
 import org.junit.Test;
 
@@ -15,6 +15,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import com.availity.app.CSVParser;
+
 public class CSVParserTest {
 
     @Test
@@ -24,12 +26,12 @@ public class CSVParserTest {
         assertFalse(new File("output.csv").exists());
     }
 
-    final String testFilesPathRelativeToExecutationLocation = "./src/test/java/com/avility/app/";
+    final String testFilesPathRelativeToExecutationLocation = "./src/test/java/com/availity/app/";
 
     @Test
     public void testMain1InputFile() {
         String[] args = new String[] {
-            testFilesPathRelativeToExecutationLocation + "AvilityData.csv"
+            testFilesPathRelativeToExecutationLocation + "AvailityData.csv"
         };
         testMainUtil(args);
         assertTrue(new File("output.csv").exists());
@@ -38,7 +40,7 @@ public class CSVParserTest {
     @Test
     public void testMain3InputFiles() {
         String[] args = new String[] {
-            testFilesPathRelativeToExecutationLocation + "AvilityData.csv",
+            testFilesPathRelativeToExecutationLocation + "AvailityData.csv",
             testFilesPathRelativeToExecutationLocation + "Data.csv",
             testFilesPathRelativeToExecutationLocation + "MyData.csv"
         };

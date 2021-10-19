@@ -1,4 +1,4 @@
-package com.avility.app;
+package com.availity.app;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -12,6 +12,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import com.availity.app.LispParenthesesChecker;
 
 import org.junit.Test;
 

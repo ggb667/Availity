@@ -1,4 +1,4 @@
-package com.avility.app;
+package com.availity.app;
 
 /**
  * Hello world!
